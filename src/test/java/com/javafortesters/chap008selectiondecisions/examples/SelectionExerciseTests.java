@@ -48,5 +48,71 @@ public class SelectionExerciseTests {
 
     }
 
+    @Test
+    public void checkNestedIfElseHorror(){
+        boolean truthy = true;
+        boolean falsey = true;
+
+        if (truthy){
+            if (!falsey){
+                if (truthy && !falsey){
+                    if (truthy || falsey){
+                        assertTrue(truthy);
+                        assertFalse(falsey);
+                    }
+                }
+            } else {
+                assertTrue(truthy);
+                assertTrue(falsey);
+            }
+        } else {
+            if (!truthy){
+                if (falsey){
+                    assertTrue(falsey);
+                    assertFalse(truthy);
+                } else {
+                    assertFalse(falsey);
+                    assertFalse(truthy);
+                }
+            }
+        }
+    }
+
+    @Test
+    public void checkCountry(){
+        assertEquals("United Kingdom", likelyCountryIs("UK"));
+        assertEquals("United Kingdom", likelyCountryIs("uK"));
+        assertEquals("United Kingdom", likelyCountryIs("Uk"));
+        assertEquals("United Kingdom", likelyCountryIs("uk"));
+        assertEquals("United States", likelyCountryIs("USA"));
+        assertEquals("United States", likelyCountryIs("US"));
+        assertEquals("France", likelyCountryIs("FR"));
+        assertEquals("Sweden", likelyCountryIs("SE"));
+        assertEquals("Rest of the World", likelyCountryIs("xx"));
+    }
+    public String likelyCountryIs(String code){
+        String likelyCountry;
+
+        switch (code.toLowerCase()){
+            case "uk":
+                likelyCountry = "United Kingdom";
+                break;
+            case "us":
+            case "usa":
+                likelyCountry = "United States";
+                break;
+            case "fr":
+                likelyCountry = "France";
+                break;
+            case "se":
+                likelyCountry = "Sweden";
+                break;
+            default:
+                likelyCountry = "Rest of the World";
+                break;
+        }
+        return likelyCountry;
+    }
+
 
 }
