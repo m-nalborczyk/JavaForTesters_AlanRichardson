@@ -57,4 +57,47 @@ public class SelectionTests {
         assertEquals("http://www.seleniumsimplified.com", url);
     }
 
+    @Test
+    public void switchExample(){
+        assertEquals("M", likelyGenderIs("sir"));
+        assertEquals("M", likelyGenderIs("master"));
+        assertEquals("M", likelyGenderIs("mr"));
+        assertEquals("F", likelyGenderIs("miss"));
+        assertEquals("F", likelyGenderIs("mrs"));
+        assertEquals("F", likelyGenderIs("ms"));
+        assertEquals("F", likelyGenderIs("lady"));
+        assertEquals("F", likelyGenderIs("madam"));
+    }
+    public String likelyGenderIs(String title){
+        String likelyGender;
+
+        switch (title.toLowerCase()){
+            case "sir":
+                likelyGender = "M";
+                break;
+            case "master":
+                likelyGender = "M";
+                break;
+            case "mr":
+                likelyGender = "M";
+                break;
+            case "miss":
+                likelyGender = "F";
+                break;
+            case "mrs":
+                likelyGender = "F";
+                break;
+            case "ms":
+                likelyGender = "F";
+                break;
+            case "lady":
+                likelyGender = "F";
+                break;
+            default:
+                likelyGender = "F";
+                break;
+        }
+        return likelyGender;
+    }
+
 }
