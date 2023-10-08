@@ -114,5 +114,36 @@ public class SelectionExerciseTests {
         return likelyCountry;
     }
 
+    @Test
+    public void assertStringOfIntNumber(){
+        assertEquals("One", provideStringNameToIntNumber(1));
+        assertEquals("Two", provideStringNameToIntNumber(2));
+        assertEquals("Three", provideStringNameToIntNumber(3));
+        assertEquals("Four", provideStringNameToIntNumber(4));
+        assertEquals("Too big", provideStringNameToIntNumber(4234));
+        assertEquals("Too small", provideStringNameToIntNumber(-4234));
+    }
+
+    public String provideStringNameToIntNumber(int number){
+        switch (number) {
+            case 1:
+                return "One";
+            case 2:
+                return "Two";
+            case 3:
+                return "Three";
+            case 4:
+                return "Four";
+            default:
+                if (number > 4) {
+                    return "Too big";
+                }
+                if (number < 1) {
+                    return "Too small";
+                }
+        }
+        return "";
+    }
+
 
 }
