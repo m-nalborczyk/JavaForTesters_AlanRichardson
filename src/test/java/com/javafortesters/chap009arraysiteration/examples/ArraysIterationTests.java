@@ -96,15 +96,38 @@ public class ArraysIterationTests {
         }
     }
 
-        @Test
-        public void testSorting(){
+    @Test
+    public void testSorting(){
         int[] outOfOrder = {2,4,2,1,5,0};
         int[] sortedArray = Arrays.copyOf(outOfOrder, outOfOrder.length);
         Arrays.sort(sortedArray);
         System.out.println("Original array: " + Arrays.toString(outOfOrder));
         System.out.println("Sorted array: " + Arrays.toString(sortedArray));
         assertEquals(5, sortedArray[sortedArray.length-1]);
+    }
 
+    @Test
+    public void testArraysOfArrays(){
+        int[][] multi = {{1,2,3,4},
+                        {5,6,7,8},
+                        {9,10,11,12},
+                        {13,14,15,16}};
+
+        assertEquals(1, multi[0][0]);
+        assertEquals(7, multi[1][2]);
+        assertEquals(14, multi[3][1]);
+
+        int[][] ragged2d = {{1,2,3,4},
+                            {5,6},
+                            {7,8,9}
+                            };
+        assertEquals(4, ragged2d[0].length);
+        assertEquals(2, ragged2d[1].length);
+        assertEquals(3, ragged2d[2].length);
+
+        assertEquals(4, ragged2d[0][3]);
+        assertEquals(6, ragged2d[1][1]);
+        assertEquals(7, ragged2d[2][0]);
     }
 
 }
