@@ -1,7 +1,10 @@
 package com.javafortesters.chap009arraysiteration.examples;
 
 import com.javafortesters.domainentities.User;
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 
@@ -36,6 +39,21 @@ public class ArraysIterationExercisesTests {
             assertEquals(("username"+(i+1)), users100[i].getUsername());
             assertEquals(("password"+(i+1)), users100[i].getPassword());
         }
+    }
+
+    @Test
+    public void sortWorkDays(){
+        String[] workdays = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+        Arrays.sort(workdays);
+        System.out.println(Arrays.toString(workdays));
+        assertEquals("Friday", workdays[0]);
+        assertEquals("Monday", workdays[1]);
+        assertEquals("Thursday", workdays[2]);
+        assertEquals("Tuesday", workdays[3]);
+        assertEquals("Wednesday", workdays[4]);
+        String[] workdaysWithLowerCase = {"monday", "tuesday", "Wednesday", "Thursday", "Friday"};
+        Arrays.sort(workdaysWithLowerCase);
+        System.out.println(Arrays.toString(workdaysWithLowerCase));
     }
 
 }
