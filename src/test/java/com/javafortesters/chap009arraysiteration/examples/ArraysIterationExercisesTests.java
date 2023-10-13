@@ -56,4 +56,31 @@ public class ArraysIterationExercisesTests {
         System.out.println(Arrays.toString(workdaysWithLowerCase));
     }
 
+    @Test
+    public void createTriangle2DArray(){
+        int[][] triangle = new int[16][];
+
+        for (int row = 0; row<triangle.length; row++){
+            triangle[row] = new int[row+1];
+            for (int i = 0; i< (row+1); i++){
+                triangle[row][i] = i;
+            }
+        }
+        print2DIntArray(triangle);
+    }
+
+    public void print2DIntArray(int [][] multi){
+        for (int[] outer : multi) {
+            if (outer == null) {
+                System.out.print("null");
+            }
+            else {
+                for (int inner : outer){
+                    System.out.print(inner + ",");
+                }
+            }
+            System.out.println("");
+        }
+    }
+
 }
