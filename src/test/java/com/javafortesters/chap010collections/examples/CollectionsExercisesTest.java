@@ -1,5 +1,6 @@
 package com.javafortesters.chap010collections.examples;
 
+import com.javafortesters.domainentities.User;
 import org.junit.Test;
 
 import java.util.*;
@@ -108,8 +109,32 @@ public class CollectionsExercisesTest {
             System.out.println(day);
         }
         weekDays.addAll(workDays); //adding what was removed
+        System.out.println();
+        System.out.println(weekDays); //now order is different
 
+        //converting collection to array 2 ways
 
+        //1st way: toArray()
+        //without parameter it will return an array of Object so we will have to perform casting
+        Object[] daysOfWeekArray = weekDays.toArray();
+        assertEquals("Saturday".length(), ((String)daysOfWeekArray[0]).length()); //now Saturday is first
+
+        //2nd way: toArray(anArray)
+        //with parameter will not require casting
+        String[] anotherArray = new String[weekDays.size()]; //initialization of empty array with length equal to weekDays size
+        weekDays.toArray(anotherArray); //filling array with weekDays elements
+        assertEquals("Saturday".length(), anotherArray[0].length()); //now we dont require casting
+    }
+    @Test
+    public void createAndManipulateCollectionOfUsers(){
+        Collection<User> someUsers = new ArrayList<>();
+        assertTrue(someUsers.size() == 0 && someUsers.isEmpty());
+        User marcin = new User("login@marcin", "password23%4");
+        User kasia = new User("katfit", "wspanialakatarzyna$69");
+        assertEquals("login@marcin", marcin.getUsername());
+        assertEquals("wspanialakatarzyna$69", kasia.getPassword());
+        someUsers.add(marcin);
+        someUsers.add(kasia);
 
     }
 }
