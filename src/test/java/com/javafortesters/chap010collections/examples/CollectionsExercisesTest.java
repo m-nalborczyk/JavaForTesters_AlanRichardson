@@ -4,8 +4,7 @@ import org.junit.Test;
 
 import java.util.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class CollectionsExercisesTest {
 
@@ -65,11 +64,50 @@ public class CollectionsExercisesTest {
         assertTrue(weekDays.containsAll(weekendDays));
         assertTrue(weekDays.containsAll(workDays));
 
+        //removing element + checking contain
+        workDays.add("Funday");
+        assertTrue("Funday has been mistakely added to the collection", workDays.contains("Funday"));
+        workDays.remove("Funday");
+        assertFalse("Funday is still there?", workDays.contains("Funday"));
 
+        //iterating over the collection with 'for each' loop
+        for (String day : weekDays){
+            System.out.println(day);
+        }
 
+        /*if not use 'Generics' (declaration of collection type) we would have to do casting as mentioned before
+        which would look like:
 
+        for (Object day : workDays) {
+            String outputDay = (String)day;
+            System.out.println(outputDay);
+         */
 
+        //clearing collection and checking if it is empty
+        weekDays.clear();
+        assertTrue(weekDays.isEmpty());
+        assertEquals(0, weekDays.size());
+        weekDays.addAll(workDays);
+        weekDays.addAll(weekendDays);
+        assertEquals(7, weekDays.size());
+        assertFalse(weekDays.isEmpty());
 
+        //removing all collection elements from another collection
+        assertEquals(7, weekDays.size());
+        assertTrue("Sunday in in week days collection", weekDays.contains("Sunday"));
+        weekDays.removeAll(weekendDays);
+
+        assertEquals(5, weekDays.size());
+        assertTrue("Sunday and Saturday are no longer in week days collection", !weekDays.containsAll(weekendDays));
+        weekDays.addAll(weekendDays);
+
+        //retaining all collection elements within another collection and removing the rest
+        weekDays.retainAll(weekendDays);
+        System.out.println();
+        for (String day : weekDays){
+            System.out.println(day);
+        }
+        weekDays.addAll(workDays); //adding what was removed
 
 
 
