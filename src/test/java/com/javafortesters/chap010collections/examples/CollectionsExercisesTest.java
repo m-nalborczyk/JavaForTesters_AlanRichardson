@@ -135,6 +135,28 @@ public class CollectionsExercisesTest {
         assertEquals("wspanialakatarzyna$69", kasia.getPassword());
         someUsers.add(marcin);
         someUsers.add(kasia);
+        assertEquals(2, someUsers.size());
+        assertFalse(someUsers.isEmpty());
+
+        Collection<User> otherUsers = new ArrayList<>();
+        User bob = new User("boblogin", "pass23");
+        User vernon = new User("vernonlogin2", "pass23fxd");
+        otherUsers.add(bob);
+        otherUsers.add(vernon);
+
+        someUsers.addAll(otherUsers);
+        assertEquals(4, someUsers.size());
+        assertTrue(someUsers.containsAll(otherUsers));
+        assertTrue(someUsers.contains(vernon));
+        assertTrue(someUsers.containsAll(otherUsers));
+
+        otherUsers.removeAll(someUsers);
+        assertTrue(otherUsers.isEmpty());
+        assertEquals(0, otherUsers.size());
+        assertFalse(someUsers.isEmpty());
+        someUsers.clear();
+        assertTrue(someUsers.isEmpty());
+
 
     }
 }
