@@ -35,7 +35,7 @@ public class CollectionsExercisesTest {
     }
 
     @Test
-    public void operationsOnCollections(){
+    public void operationsOnCollections() {
 
         Collection<String> weekendDays = new ArrayList<String>();
         Collection<String> workDays = new ArrayList<String>();
@@ -72,7 +72,7 @@ public class CollectionsExercisesTest {
         assertFalse("Funday is still there?", workDays.contains("Funday"));
 
         //iterating over the collection with 'for each' loop
-        for (String day : weekDays){
+        for (String day : weekDays) {
             System.out.println(day);
         }
 
@@ -105,7 +105,7 @@ public class CollectionsExercisesTest {
         //retaining all collection elements within another collection and removing the rest
         weekDays.retainAll(weekendDays);
         System.out.println();
-        for (String day : weekDays){
+        for (String day : weekDays) {
             System.out.println(day);
         }
         weekDays.addAll(workDays); //adding what was removed
@@ -117,7 +117,7 @@ public class CollectionsExercisesTest {
         //1st way: toArray()
         //without parameter it will return an array of Object so we will have to perform casting
         Object[] daysOfWeekArray = weekDays.toArray();
-        assertEquals("Saturday".length(), ((String)daysOfWeekArray[0]).length()); //now Saturday is first
+        assertEquals("Saturday".length(), ((String) daysOfWeekArray[0]).length()); //now Saturday is first
 
         //2nd way: toArray(anArray)
         //with parameter will not require casting
@@ -125,8 +125,9 @@ public class CollectionsExercisesTest {
         weekDays.toArray(anotherArray); //filling array with weekDays elements
         assertEquals("Saturday".length(), anotherArray[0].length()); //now we dont require casting
     }
+
     @Test
-    public void createAndManipulateCollectionOfUsers(){
+    public void createAndManipulateCollectionOfUsers() {
         Collection<User> someUsers = new ArrayList<>();
         assertTrue(someUsers.size() == 0 && someUsers.isEmpty());
         User marcin = new User("login@marcin", "password23%4");
