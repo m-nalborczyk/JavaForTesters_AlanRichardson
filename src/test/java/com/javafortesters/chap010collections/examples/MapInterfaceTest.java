@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class MapInterfaceTest {
 
@@ -56,8 +57,26 @@ public class MapInterfaceTest {
         assertEquals("newvalue1", map.get("key1"));
         assertEquals("value2",map.get("key2"));
         assertEquals("value3", map.get("key3"));
+        assertEquals(null, map.get("key4"));
 
+        //remove(k)
+        map.remove("key1");
+        assertEquals(2, map.size());
+        assertEquals(null, map.get("key1"));
 
+    }
+    @Test
+    public void otherMapOperations(){
+        Map<String, String> map = new HashMap<>();
+        map.put("key1","value1");
+        map.put("key2","value2");
+        map.put("key3","value3");
+        assertEquals(3, map.size());
+
+        //clear size isEmpty
+        map.clear();
+        assertTrue(map.isEmpty());
+        assertEquals(0, map.size());
 
     }
 }
