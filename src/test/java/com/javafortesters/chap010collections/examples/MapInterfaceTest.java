@@ -3,8 +3,10 @@ package com.javafortesters.chap010collections.examples;
 import com.javafortesters.domainentities.User;
 import org.junit.Test;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -66,17 +68,65 @@ public class MapInterfaceTest {
 
     }
     @Test
-    public void otherMapOperations(){
+    public void otherMapOperations() {
+        Map<String, String> map = new HashMap<>();
+        map.put("key1", "value1");
+        map.put("key2", "value2");
+        map.put("key3", "value3");
+        assertEquals(3, map.size());
+
+        //containsKey(k) containsValue(v)
+        assertTrue(map.containsKey("key2"));
+        assertTrue(map.containsValue("value3"));
+
+        //putAll(m) - adding(copying) one map to another map; if key from added map exists then the value from the new map overwrites existing one
+        Map<String, String> mapToBeAdded = new HashMap<>();
+        mapToBeAdded.put("key1", "other value than in the first map");
+        mapToBeAdded.put("key4", "value4");
+        map.putAll(mapToBeAdded);
+        assertEquals(4, map.size());
+        assertEquals("other value than in the first map", map.get("key1"));
+
+        //clear size isEmpty
+        assertEquals(2, mapToBeAdded.size());
+        mapToBeAdded.clear();
+        assertTrue(mapToBeAdded.isEmpty());
+        assertEquals(0, mapToBeAdded.size());
+
+        //values - returns values from the Map in the form of Collection
+        Collection<String> values = map.values();
+        System.out.println(values);
+
+        //keySet - returns keys from the Map in the form of Set
+        Set<String> keys = map.keySet();
+        System.out.println(keys);
+    }
+    @Test
+    public void gettingKeyValuePairsInMapEntryObjects(){
         Map<String, String> map = new HashMap<>();
         map.put("key1","value1");
         map.put("key2","value2");
         map.put("key3","value3");
-        assertEquals(3, map.size());
 
-        //clear size isEmpty
-        map.clear();
-        assertTrue(map.isEmpty());
-        assertEquals(0, map.size());
+        //entrySet - returns Map.Entry objects ("key,value" pairs) from the Map in the form of Set
+        /*
+        Entry provides methods:
+        -getValue to return the value
+        -getKey to return the key
+        -setValue to set the value
+         */
+        Set<Map.Entry<String,String>> entries = map.entrySet();
+        System.out.println(entries);
+
+        //below code iterates through the entries in the Map and sets all the values to "bob"
+        for (Map.Entry<String,String> entry : entries){
+            entry.setValue("bob");
+        }
+        System.out.println(entries);
+
+
+
+
 
     }
 }
