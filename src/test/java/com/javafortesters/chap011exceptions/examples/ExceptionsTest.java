@@ -13,6 +13,13 @@ public class ExceptionsTest {
         String yourAge = "You are " + ageAsString + " years old.";
         assertEquals("You are 18 years old.", yourAge);
     }
+    @Test(expected = NullPointerException.class) // This is the same as above but with expectation of exception and passing test on its occurrence
+    public void throwAnExpectedNullPointerExceptionAndPassTheTest(){
+        Integer age = null;
+        String ageAsString = age.toString();
+        String yourAge = "You are " + ageAsString + " years old.";
+        assertEquals("You are 18 years old.", yourAge);
+    }
 
     @Test
     public void catchANullPointerException(){
